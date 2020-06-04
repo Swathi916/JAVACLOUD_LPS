@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbg">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" 
+      >
+        <a class="nav-link" routerLink='/home'>Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='!clientService.isLogged()'
+      >
+        <a class="nav-link" routerLink='/login'>Login<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isAdmin() ||clientService.isApproval()'>
+        <a class="nav-link" routerLink='/view-customer'>View Customer<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='!clientService.isLogged()'>
+      
+        <a class="nav-link" routerLink='/make-loan'>Apply Loan<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='/view-lpg'>View Loan<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isAdmin()'
+      >
+        <a class="nav-link" routerLink='/add-client'>Add Client<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isAdmin()'
+      >
+        <a class="nav-link" routerLink='/add-loan-lpg' >Add Loan program<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isAdmin()'
+      >
+        <a class="nav-link" routerLink='/view-lpg-tbl'>View lpg <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isAdmin()'>
+        <a class="nav-link" routerLink='/view-client'>View Clients <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isApproval()'>
+        <a class="nav-link" routerLink='/view-application'>View Application<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isCustomer()'>
+        <a class="nav-link" routerLink='/view-details'>View Details<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isCustomer()'>
+        <a class="nav-link" routerLink='/loan-login'>Make Loan<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf='clientService.isCustomer()'>
+        <a class="nav-link" routerLink='/check-status'>Check Status<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active"  *ngIf='clientService.isLogged()'>
+        <a class="nav-link" style="cursor: pointer;" (click)='clientService.logout()'>Logout</a>
+    </li>
+  
+    </ul>
+  </div>
+</nav>

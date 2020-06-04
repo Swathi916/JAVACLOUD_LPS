@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-6" class="imgcon">
+      <img *ngIf="details.gender=='Male'" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGJSi3R20EO_XWEQOSB5gt0JvYJBbflw0eoAqZegY8OOwXYIfS&usqp=CAU" alt="Avatar" style="width:80%;height: 100%"/>
+      <img *ngIf="details.gender=='Female'" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ&usqp=CAU"alt="Avatar" style="width:80%;height:100%"/>
+    </div>
+    <div class="col-md-6">
+      <div class="container">
+        <br><br>
+          <p ><strong> Name : </strong>{{details.fullName}}</p>
+          <p ><strong> User Id : </strong>{{details.userId}}</p>
+          <p ><strong> Date of Birth : </strong>{{details.dob}}</p>
+          <p ><strong> Mobile No : </strong>{{details.mobileNo}}</p>
+          <p ><strong> Aadhar No : </strong>{{details.adharNo}}</p>
+          <p ><strong> Gender : </strong>{{details.gender}}</p>
+          <p ><strong> Email Id : </strong>{{details.email}}</p>
+         
+        </div>
+    </div>
+  </div>  
+</div>

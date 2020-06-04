@@ -1,0 +1,13 @@
+.tablebg
+{
+    /* background: #373B44;  /* fallback for old browsers 
+background: -webkit-linear-gradient(to right, #4286f4, rgb(35, 87, 207));  
+background: linear-gradient(to right, #4286f4, rgb(35, 87,207)); 
+color: cornsilk; */
+background: #041f3c; /* fallback for old browsers */
+color:cornsilk;
+}
+.col-styling{
+    padding-top: 50px;
+}
+

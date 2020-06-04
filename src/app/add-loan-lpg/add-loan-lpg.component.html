@@ -1,0 +1,85 @@
+
+  <div class= "alert alter-success" *ngIf='message'>{{ message}}</div>
+<div class="container">
+  <div class="frame">
+    <div class="nav">
+      <ul class="links">
+        <li class="login-active"><a class="btn">Add Loan Program</a></li>
+      </ul>
+    </div>
+    <div ng-app ng-init="checked = false">
+		<form class="form-login" #addLoanForm="ngForm" (ngSubmit)='postLoans(addLoanForm)' name="form">
+
+      <div class="form-group">
+        <label>Loan Type</label>
+        <select class="form-styling" style="color:cornsilk" placeholder="please select any loan type" name="loanType" ngModel #loanType="ngModel" required>
+          <option class="dro" value="Home Construction">Home Construction</option>
+          <option  class="dro" value="Home Purchase">Home Purchase</option>
+          <option class="dro"  value="Home Extension">Home Extension</option>
+          <option class="dro" value="Home Conversion">Home Extension</option>
+        </select>
+        <div *ngIf='loanType.invalid && loanType.touched'>
+          <small class="text-danger font-italic">please choose any option!!</small>
+        </div>
+      </div>
+      <!-- <div class="form-group">
+        <label >Loan Type</label>
+        <input class="form-styling" #loanType='ngModel' type="text" pattern="([a-zA-Z]{1,15}) ([a-zA-Z]{1,15})"
+        placeholder="enter loan type...!!" name="loanType" required ngModel>
+          <div *ngIf='loanType.invalid && loanType.touched' >
+            <small class="text-danger" *ngIf='loanType.errors.required'>Loan type is required</small>
+            <small class="text-danger" *ngIf='loanType.errors.pattern'>enter alphabets only</small>
+          </div>     
+  </div> -->
+      <div class="form-group">
+          <label >Loan Amount</label>
+          <input class="form-styling" #loanAmount='ngModel' type="text" name="loanAmount" placeholder="enter loan amount"
+            required  ngModel pattern="[0-9]{4,8}">
+            <div *ngIf='loanAmount.invalid && loanAmount.touched'>
+              <small class="text-danger" *ngIf='loanAmount.errors.required'>Amount is required</small>
+              <small class="text-danger" *ngIf='loanAmount.errors.pattern'>enter valid amount</small>
+            </div> 
+    </div>
+
+    <div class="form-group">
+          <label>Rate of Interest</label>
+          <input class="form-styling" type="text" #rateOfInterest='ngModel'  name="rateOfInterest" 
+          pattern="([1-9]|1[0-4]).([0-9]{1,4})%"
+           required ngModel placeholder="enter rate of interest...!!">
+          <div *ngIf='rateOfInterest.invalid && rateOfInterest.touched'>
+            <small class="text-danger" *ngIf='rateOfInterest.errors.required'>rate of interest  required</small>
+            <small class="text-danger" *ngIf='rateOfInterest.errors.pattern'>rate of interest should be proper format (ex:8.5%)</small>
+          </div>
+    </div>
+
+    <div class="form-group">
+          <label>Period</label>
+          <input class="form-styling" #period='ngModel'  name="period" placeholder="enter period...!!!" 
+          ngModel required type="text" pattern="([1-9]|1[0-9]) (years)" >
+          <div *ngIf='period.invalid && period.touched'>
+            <small class="text-danger" *ngIf=' period.errors.required'>Period required</small>
+            <small class="text-danger" *ngIf=' period.errors.pattern'>Enter between 1 to 19 years </small>
+          </div>
+    </div>
+         
+            <button class="btn-login" class="btn-animate" type= "submit">Add</button>
+		</form>
+	</div>	
+  </div> 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

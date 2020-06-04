@@ -1,0 +1,24 @@
+
+<div class="alert alert-danger" *ngIf='message'>{{message}}</div>
+<div class="px-3 py-3 col-md">
+</div> 
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <!-- <th>Sl No</th> -->
+      <th>Application Id</th>
+      <th>Loan Type</th>
+      <th>Loan Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr  *ngFor ="let applicants of users.applicant">
+      <td>{{applicants.appId}}</td>
+      <td>{{applicants.loanType}}</td>
+      <td>{{applicants.loanAmount}}</td> 
+      <td>{{applicants.applicationStatus}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,108 @@
+<div class= "alert alert-success" *ngIf='message'>{{ message}}</div>
+<div class= "alert alert-danger" *ngIf='message1'>{{ message1}}</div>
+<div class="container">
+  <div class="frame">
+    <div class="nav">
+      <ul class="links">
+        <li class="login-active"><a class="btn">Add Client</a></li>
+      </ul>
+    </div>
+    <div ng-app ng-init="checked = false">
+		<form class="form-login" #addClientForm="ngForm" name="form" (ngSubmit)='postClient(addClientForm)'>
+
+      <div class="form-group">
+        <label >Name</label>
+        <input class="form-styling" #fullName='ngModel' type="text" name="fullName" placeholder="enter client name....!!"
+          required minlength="3"  pattern="([a-zA-Z]{3,15}) ([a-zA-Z]{1,15})" ngModel>
+          <div *ngIf='fullName.invalid && fullName.touched'>
+            <small class="text-danger" *ngIf='fullName.errors.required'>Name is required</small>
+            <small class="text-danger" *ngIf='fullName.errors.pattern'>Please enter Full Name (eg:John M)</small>
+            <small class="text-danger" *ngIf='fullName.errors.minlength'>Name should contain minimum 3 characters</small>
+          </div>
+        </div>
+          
+    <div class="form-group">
+      <label >Email</label>
+      <input class="form-styling" email #email='ngModel' type="email" name="email" placeholder="enter clients email.....!!"
+        required  ngModel minlength="8">
+        <div *ngIf='email.invalid && email.touched'>
+          <small class="text-danger" *ngIf='email.errors.required'>Email is required</small>
+          <small class="text-danger" *ngIf='email.errors.minlength'>Email should contain atleast 8 characters</small>
+          <small class="text-danger" *ngIf='email.errors?.email && !(email.errors?.minlength)'>Enter valid email id only</small>
+        </div>       
+</div>
+
+<div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-styling" type="password" #password='ngModel'  name="password" placeholder="enter your password...!!!" required
+      ngModel  pattern ="(?=.*[a-z])(?=.*\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,15}">
+      <div *ngIf='password.invalid && password.touched'>
+        <small class="text-danger" *ngIf='password.errors?.required'>Password required</small>
+        <small class="text-danger" *ngIf='password.errors?.pattern'>Password should contain atlest 8 character,min 1 uppercase
+          1 lowercase and 1 special character</small>
+
+      </div>
+</div>
+
+    <div class="form-group">
+          <label>Mobile</label>
+          <input class="form-styling" type="text" #mobile='ngModel'  name="mobileNo"
+          placeholder="enter mobile no...!!!" required ngModel  pattern="^\d{10}$">
+          <div *ngIf='mobile.invalid && mobile.touched'>
+            <small class="text-danger" *ngIf=' mobile.errors.required'>Mobile Number required</small>
+            <small class="text-danger" *ngIf=' mobile.errors.pattern'>Mobile Number should contain 10 digits</small>
+          </div>
+    </div>
+    <label>Gender</label>
+    <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" value="Male" id="male" name="gender" class="custom-control-input" #male='ngModel' [(ngModel)]="gender">
+    <label class="custom-control-label" for="male">Male</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" value="Female" id="female" name="gender" class="custom-control-input" #female='ngModel' [(ngModel)]="gender">
+  <label class="custom-control-label"  for="female">Female</label>
+</div>
+<div class="form-group">
+  <label>Adhar Number</label>
+  <input class="form-styling " type="text" #adharNo='ngModel'  name="adharNo"
+required ngModel  pattern="[0-9]{12}">
+  <div *ngIf='adharNo.invalid && adharNo.touched'>
+    <small class="text-danger" *ngIf=' adharNo.errors.required'>Adhar Number is required</small>
+    <small class="text-danger" *ngIf=' adharNo.errors.pattern'>Adhar Number should contain 12 digits</small>
+  </div>
+</div>
+<div class="form-group">
+  <label>Date of Birth </label>
+  <input type="date" class="form-styling " #dob="ngModel"  name="dob"  ngModel required
+  min="1960-01-01" max="1998-12-31">
+  <div *ngIf='dob.invalid && dob.touched'>
+    <small class="text-danger" *ngIf=' dob.errors.required'>Date is required</small>
+    <!-- <small class="text-danger" *ngIf=' dob.errors.min'>Enter valid date</small>
+    <small class="text-danger" *ngIf=' dob.errors.max'>Mobile Number should contain 10 digits</small> -->
+  </div>
+</div>
+
+    <input type="hidden"  name="role" id="role" #role='ngModel' [(ngModel)]="defaultValue" />
+
+    
+   <button class="btn-login" class="btn-animate" type= "submit">Add</button>
+		</form>
+	</div>	
+  </div> 
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

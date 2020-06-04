@@ -1,0 +1,58 @@
+<div class="alert alert-danger" *ngIf='message'>{{message}}</div>
+<div class="container">
+  <div class="col-styling" >
+    <label class="sr-only" for="inlineFormInputGroup">search</label>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend search">
+        <div class="input-group-text">search</div>
+      </div>
+      <input type="text" class="form-control col-md-2" id="inlineFormInputGroup" [(ngModel)]="searchValue" > 
+    </div>
+  </div>
+  <div class="sort">
+    <label class="sr-only" for="inlineFormInputGroup">Sort by</label>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">sort by</div>
+      </div>
+  <!-- <div class="row">
+    <h5 class="col-md-2">Sort by</h5>
+    <div class="form-group"> -->
+      <select class="form-control col-md-2" name="" id="" [(ngModel)]="fieldName" (change)="getSortedData()">
+        <option value="loanType">Loan Type</option>
+        <option value="rateOfInterest">Rate of Interest</option>
+        <option value="loanAmount">Loan Amount</option>
+      </select>
+    </div>
+  </div>
+  <table class="table table-hover table-bordered" style="margin-top: 50px;">
+<thead>
+  <tr class="tablebg">
+    <th scope="col">Loan No</th>
+    <th scope="col">Loan Type</th>
+    <th scope="col">Loan Amount</th>
+    <th scope="col">Rate of Intrest</th>
+    <th scope="col">Period</th>
+    <th scope="col">Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor=" let loans of loan |loan:searchValue:'loanType'">
+    <th>{{loans.loanNo}}</th>
+    <th>{{loans.loanType}}</th>
+    <th>{{loans.loanAmount}}</th>
+    <th>{{loans.rateOfInterest}}</th>
+    <th>{{loans.period}}</th>
+   
+    <th><input type="button" class="btn btn-primary" value="update" (click)='selectLoan(loans)'>
+    <input type="button" class="btn btn-danger" (click)="deleteLoan(loans)" value="delete"></th>
+  </tr>
+  
+</tbody>
+</table>
+<mat-paginator [length]="totalItems"
+              [pageSize]="itemsPerPage"
+              [pageSizeOptions]="[2, 5, 10, 25, 100]"
+              (page) ="getNextPageItems($event)">
+</mat-paginator>
+</div>

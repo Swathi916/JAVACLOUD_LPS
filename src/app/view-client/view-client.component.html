@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="col-styling" >
+    <label class="sr-only" for="inlineFormInputGroup">search</label>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend search">
+        <div class="input-group-text">search</div>
+      </div>
+      <input type="text" class="form-control col-md-2" id="inlineFormInputGroup" [(ngModel)]="searchValue" > 
+    </div>
+  </div>
+  <div class="sort">
+    <label class="sr-only" for="inlineFormInputGroup">Sort by</label>
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">sort by</div>
+      </div>
+      <select class="form-control col-md-2" name="" id="" [(ngModel)]="fieldName" (change)="getSortedData()">
+        <option value="fullName">Name</option>
+        <option value="email">Email</option>
+        <option value="mobileNo">Mobile</option>
+      </select>
+      <!-- <input type="text" class="form-control col-md-2" id="inlineFormInputGroup" [(ngModel)]="searchValue" >  -->
+    </div>
+  </div>
+  
+  <table class="table table-hover table-bordered" style="margin-top: 50px;">
+<thead>
+  <tr class="tablebg">
+    <th scope="col">Client Id</th>
+    <th scope="col">Full Name</th>
+    <th scope="col">Email Id</th>
+    <th scope="col">Mobile Number</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Date of Birth</th>
+    <th scope="col">Adhar No</th>
+    <th scope="col">Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor=" let clients of client|client:searchValue:'fullName'">
+    <th>{{clients.userId}}</th>
+    <th>{{clients.fullName}}</th>
+    <th>{{clients.email}}</th>
+    <th>{{clients.mobileNo}}</th>
+    <th>{{clients.gender}}</th>
+    <th>{{clients.dob}}</th>
+    <th>{{clients.adharNo}}</th>
+    <th>
+    <input type="button" class="btn btn-danger"  value="delete" (click)='deleteClient(clients)'></th>
+  </tr>
+  
+</tbody>
+</table>
+<mat-paginator [length]="totalItems"
+              [pageSize]="itemsPerPage"
+              [pageSizeOptions]="[1, 5, 10, 25, 100]"
+              (page) ="getNextPageItems($event)">
+</mat-paginator>
+</div>
